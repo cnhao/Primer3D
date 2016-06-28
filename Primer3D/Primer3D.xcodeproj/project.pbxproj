@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FE67DC91D20D9A40049304A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE67DC81D20D9A40049304A /* main.cpp */; };
+		5FAFE4C51D20DD6C00A96796 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAFE4C31D20DC3E00A96796 /* libSDL2.a */; };
+		5FAFE4CD1D20DD6C00A96796 /* libSDL2main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAFE4C91D20DD6C00A96796 /* libSDL2main.a */; };
+		5FEF91501D228CE300AAAC40 /* windows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF914E1D228CE300AAAC40 /* windows.cpp */; };
+		5FEF91521D22C64400AAAC40 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF91511D22C64400AAAC40 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5FAFE4C31D20DC3E00A96796 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../usr/local/lib/libSDL2.a; sourceTree = "<group>"; };
+		5FAFE4C91D20DD6C00A96796 /* libSDL2main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2main.a; path = ../../../../../usr/local/lib/libSDL2main.a; sourceTree = "<group>"; };
 		5FE67DC51D20D9A40049304A /* Primer3D */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Primer3D; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FE67DC81D20D9A40049304A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5FEF914E1D228CE300AAAC40 /* windows.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = windows.cpp; sourceTree = "<group>"; };
+		5FEF914F1D228CE300AAAC40 /* windows.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = windows.hpp; sourceTree = "<group>"; };
+		5FEF91511D22C64400AAAC40 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FAFE4CD1D20DD6C00A96796 /* libSDL2main.a in Frameworks */,
+				5FAFE4C51D20DD6C00A96796 /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +50,8 @@
 		5FE67DBC1D20D9A30049304A = {
 			isa = PBXGroup;
 			children = (
+				5FAFE4C91D20DD6C00A96796 /* libSDL2main.a */,
+				5FAFE4C31D20DC3E00A96796 /* libSDL2.a */,
 				5FE67DC71D20D9A40049304A /* Primer3D */,
 				5FE67DC61D20D9A40049304A /* Products */,
 			);
@@ -57,7 +68,9 @@
 		5FE67DC71D20D9A40049304A /* Primer3D */ = {
 			isa = PBXGroup;
 			children = (
-				5FE67DC81D20D9A40049304A /* main.cpp */,
+				5FEF914E1D228CE300AAAC40 /* windows.cpp */,
+				5FEF914F1D228CE300AAAC40 /* windows.hpp */,
+				5FEF91511D22C64400AAAC40 /* main.cpp */,
 			);
 			path = Primer3D;
 			sourceTree = "<group>";
@@ -118,7 +131,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE67DC91D20D9A40049304A /* main.cpp in Sources */,
+				5FEF91501D228CE300AAAC40 /* windows.cpp in Sources */,
+				5FEF91521D22C64400AAAC40 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +142,7 @@
 		5FE67DCA1D20D9A40049304A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -162,17 +176,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
 			};
 			name = Debug;
 		};
 		5FE67DCB1D20D9A40049304A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -200,15 +217,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
 			};
 			name = Release;
 		};
 		5FE67DCD1D20D9A40049304A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -216,6 +237,7 @@
 		5FE67DCE1D20D9A40049304A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -239,6 +261,7 @@
 				5FE67DCE1D20D9A40049304A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

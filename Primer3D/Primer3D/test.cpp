@@ -101,8 +101,4 @@ void example04()
     
 }
 
-int main()
-{
-    example04();
-    return 1;
-}
+

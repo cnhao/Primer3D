@@ -7,3 +7,13 @@
 //
 
 #include <stdio.h>
+#include "windows.hpp"
+
+using namespace _primer3d_window;
+
+int main(){
+    
+    init();
+    drawBeauty();
+    run();
+}
