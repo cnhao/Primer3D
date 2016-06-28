@@ -8,8 +8,8 @@
 
 
 
-int width = 700;
-int height = 590;
+int width = 900;
+int height = 600;
 
 void example04()
 {
@@ -20,24 +20,29 @@ void example04()
     
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)    return;
     
-    pWindow = SDL_CreateWindow("Shit SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 700, 590, 0);
+    pWindow = SDL_CreateWindow("Shit SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
     if (NULL == pWindow)    return;
     
     pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
     if (NULL == pRenderer)    return;
     
-//    SDL_SetRenderDrawColor(pRenderer, 70, 200, 122, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(pRenderer, 70, 200, 122, SDL_ALPHA_OPAQUE);
     
     
     uint32_t* pixels = (uint32_t*)calloc(width*height,4);
 
     int  depth, pitch;
     
-    pitch = height*4;	// 每行图像所占直接数
+    pitch = width*4;	// 每行图像所占直接数
     depth = 4*8;		// 每像素所占位数
     
-    for (int i = 0; i < width*height; i++) {
-        pixels[i] = ARGB(rand()%256, rand()%256, rand()%256, 255);
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            float jFloat = static_cast<float>(j);
+            float iFloat = static_cast<float>(i);
+            pixels[width*i+j] = ARGB( int(jFloat/width*255),
+                                     int(iFloat/height*255), 255, 255);
+        }
     }
     
     
