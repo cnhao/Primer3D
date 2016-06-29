@@ -18,7 +18,7 @@ void _primer3d_window::init(){
     pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
     if (NULL == pRenderer)    return;
     
-    SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+//    SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
     
 }
 
@@ -34,6 +34,76 @@ void _primer3d_window::drawBeauty(){
         }
     }
 }
+
+void _primer3d_window::drawPixel(int x, int y, Uint32 color){
+//    pixels[(height-y-2)*width+x] = color;
+    pixels[width*y+x] = color;
+}
+
+void _primer3d_window::drawLine(int x0, int y0, int x1, int y1, Uint32 color){
+    
+    int x, y, dx, dy, dx2, dy2, xstep, ystep, error, index;
+    x = x0;
+    y = y0;
+    dx = x1 - x0;
+    dy = y1 - y0;
+    
+    if (dx >= 0) // 从左往右画
+    {
+        xstep = 1; // x步进正1
+    }
+    else // 从右往左画
+    {
+        xstep = -1; // x步进负1
+        dx = -dx; // 取绝对值
+    }
+    
+    if (dy >= 0) // 从上往下画
+    {
+        ystep = 1; // y步进正1
+    }
+    else // 从下往上画
+    {
+        ystep = -1; // y步进负1
+        dy = -dy; // 取绝对值
+    }
+    
+    dx2 = dx << 1; // 2 * dx
+    dy2 = dy << 1; // 2 * dy
+    
+    if (dx > dy) // 近X轴直线
+    {
+        error = dy2 - dx;
+        for (index = 0; index <= dx; ++index)
+        {
+            _primer3d_window::drawPixel(x, y, color);
+            if (error >= 0)
+            {
+                error -= dx2;
+                y += ystep;
+            }
+            error += dy2;
+            x += xstep;
+        }
+    }
+    else // 近Y轴直线
+    {
+        error = dx2 - dy;
+        for (index = 0; index <= dy; ++index)
+        {
+            _primer3d_window::drawPixel(x, y, color);
+            if (error >= 0)
+            {
+                error -= dy2;
+                x += xstep;
+            }
+            error += dx2;
+            y += ystep;
+        }
+    }
+    
+}
+
 
 void _primer3d_window::run(){
     

@@ -16,13 +16,13 @@
 
 namespace _primer3d_window {
     
-    static SDL_Window		*pWindow = NULL;
-    static SDL_Renderer    *pRenderer = NULL;
-    static SDL_Texture		*pTexture;
+    static SDL_Window *pWindow = NULL;
+    static SDL_Renderer *pRenderer = NULL;
+    static SDL_Texture *pTexture;
     static const int width = 900;
     static const int height = 600;
-    static const int pitch = width*4;	// 每行图像所占直接数
-    static const int depth = 4*8;		// 每像素所占位数
+    static const int pitch = width*4;    // 每行图像所占直接数
+    static const int depth = 4*8;        // 每像素所占位数
     static int32_t* pixels = (int32_t*)calloc(width*height, 4);
     static int rmask = 0xFF000000;
     static int gmask = 0x00FF0000;
@@ -32,7 +32,8 @@ namespace _primer3d_window {
 
 
     void init();
-    void drawPixel(int x, int y, int color);
+    void drawPixel(int x, int y, Uint32 color);
+    void drawLine(int x0, int y0, int x1, int y1, Uint32 color);
     void drawBeauty();
     void run();
 
