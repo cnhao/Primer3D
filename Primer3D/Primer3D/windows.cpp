@@ -12,7 +12,7 @@ void _primer3d_window::init(){
     
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)    return;
     
-    pWindow = SDL_CreateWindow("Shit SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
+    pWindow = SDL_CreateWindow("Primer3D", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
     if (NULL == pWindow)    return;
     
     pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
